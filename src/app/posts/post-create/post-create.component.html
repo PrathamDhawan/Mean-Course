@@ -1,5 +1,16 @@
-<h1>Post Create Component</h1>
+<mat-card>
 
-<textarea rows="5"></textarea>
-<hr>
-<button (click)="onAddPost()">Save Post</button>
+  <mat-form-field>
+    <input matInput placeholder="Title" type="text"
+      [(ngModel)]="newPostTitle">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="What are you thinking?" rows="4"
+      [(ngModel)]="newPostContent"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color = "warn" (click)="onAddPost()">
+    Save Post</button>
+
+</mat-card>
