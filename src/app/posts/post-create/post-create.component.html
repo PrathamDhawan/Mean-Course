@@ -1,16 +1,19 @@
 <mat-card>
+  <form (ngSubmit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Title" type="text"
+        ngModel required #title="ngModel" minlength="1" name="title">
+        <mat-error *ngIf="title.invalid">Minimum word limit [1]</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Title" type="text"
-      [(ngModel)]="newPostTitle">
-  </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="What are you thinking?" rows="4"
+        ngModel required #content="ngModel" minlength="3" name="content">
+      </textarea>
+        <mat-error *ngIf="content.invalid">Minimum word limit [3]</mat-error>
+   </mat-form-field>
 
-  <mat-form-field>
-    <textarea matInput placeholder="What are you thinking?" rows="4"
-      [(ngModel)]="newPostContent"></textarea>
-  </mat-form-field>
-
-  <button mat-raised-button color = "warn" (click)="onAddPost()">
-    Save Post</button>
-
+    <button mat-raised-button color = "warn" type="submit">
+      Save Post</button>
+  </form>
 </mat-card>
